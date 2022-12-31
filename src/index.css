@@ -13,11 +13,18 @@ header {
   text-align: center;
   padding: 4px 10%;
   margin-bottom: 50px;
-  background-color: rgb(102, 94, 74);
+  background-color: rgb(128, 123, 111);
 }
 .app {
   background-image: url(./images/mountain.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
+}
+.taskCard {
+  width: 250px;
+  padding: 10px 25px;
+  margin: 10px 1%;
+  background-color: aliceblue;
+  border-radius: 5px;
 }
