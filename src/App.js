@@ -1,9 +1,11 @@
-import { Header } from "./components/Header";
+import { Header } from "./components/templates/Header";
+import { TaskCards } from "./components/templates/TaskCards";
 
 function App() {
   return (
     <div className="app">
       <Header />
+      <TaskCards />
     </div>
   );
 }
