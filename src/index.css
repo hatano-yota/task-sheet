@@ -41,3 +41,11 @@ header {
   border: none;
   outline: none;
 }
+.taskAddInput {
+  width: 100%;
+  font-size: 1.3rem;
+  padding: 8px 12px;
+  border-radius: 3px;
+  border: none;
+  outline: none;
+}
