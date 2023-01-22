@@ -90,3 +90,14 @@ header {
   box-shadow: none;
   transform: translate(3px, 3px);
 }
+.taskHeader {
+  display: flex;
+  justify-content: space-between;
+}
+.taskCardDeleteButton {
+  border: none;
+  background-color: rgb(211, 225, 238);
+  cursor: pointer;
+  font-size: 16px;
+  color: rgb(158, 46, 46);
+}

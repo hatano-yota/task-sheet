@@ -9,8 +9,10 @@ export const TaskCard = () => {
   const [taskList, setTaskList] = useState([]);
   return (
     <div className="taskCard">
-      <TaskCardTitle />
-      <TaskCardDeleteButton />
+      <div className="taskHeader">
+        <TaskCardTitle />
+        <TaskCardDeleteButton />
+      </div>
       <TaskAddInput
         inputText={inputText}
         setInputText={setInputText}
