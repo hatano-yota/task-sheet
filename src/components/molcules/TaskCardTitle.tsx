@@ -8,7 +8,6 @@ export const TaskCardTitle = () => {
     setIsClick(true);
   };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e);
     setInputCardTitle(e.target.value);
   };
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
