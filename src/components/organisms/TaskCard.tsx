@@ -1,13 +1,21 @@
-import React, { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { TaskCardTitle } from "../molcules/TaskCardTitle";
 import { TaskCardDeleteButton } from "../molcules/TaskCardDeleteButton";
 import { TaskAddInput } from "../molcules/TaskAddInput";
 import { Tasks } from "../molcules/Tasks";
 import { Draggable } from "react-beautiful-dnd";
+import { DragElement, TaskProps } from "../../types/Types";
 
-export const TaskCard = ({ taskCard, index, taskCardList, setTaskCardList }) => {
-  const [inputText, setInputText] = useState("");
-  const [taskList, setTaskList] = useState([]);
+type Props = {
+  index: number;
+  taskCard: { id: string; draggableId: string };
+  taskCardList: { id: string; draggableId: string }[];
+  setTaskCardList: Dispatch<SetStateAction<DragElement[]>>;
+};
+
+export const TaskCard = ({ taskCard, index, taskCardList, setTaskCardList }: Props) => {
+  const [inputText, setInputText] = useState<string>("");
+  const [taskList, setTaskList] = useState<TaskProps[]>([]);
 
   return (
     <Draggable draggableId={taskCard.id} index={index}>

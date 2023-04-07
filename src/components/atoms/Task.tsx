@@ -1,8 +1,16 @@
-import React from "react";
 import { Draggable } from "react-beautiful-dnd";
+import { TaskProps } from "../../types/Types";
+import { Dispatch, SetStateAction } from "react";
 
-export const Task = ({ task, index, taskList, setTaskList }) => {
-  const handleDelete = (id) => {
+type Props = {
+  task: TaskProps;
+  index: number;
+  taskList: TaskProps[];
+  setTaskList: Dispatch<SetStateAction<TaskProps[]>>;
+};
+
+export const Task = ({ task, index, taskList, setTaskList }: Props) => {
+  const handleDelete = (id: string) => {
     setTaskList(taskList.filter((task) => task.id !== id));
   };
 

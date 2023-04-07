@@ -1,18 +1,22 @@
-import React, { useState } from "react";
-import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import { useState } from "react";
+import { DragDropContext, DropResult, Droppable } from "react-beautiful-dnd";
 import { AddTaskCardButton } from "../organisms/AddTaskCardButton";
 import { TaskCard } from "../organisms/TaskCard";
+import { DragElement } from "../../types/Types";
 
 export const TaskCards = () => {
-  const [taskCardList, setTaskCardList] = useState([{ id: "0", draggableId: "item-00" }]);
+  const [taskCardList, setTaskCardList] = useState<DragElement[]>([
+    { id: "0", draggableId: "item-00" },
+  ]);
 
-  // 要修正 *重複処理
-  const reorder = (dragList, startIndex, endIndex) => {
+  // TODO *重複処理
+  const reorder = (dragList: DragElement[], startIndex: number, endIndex: number) => {
     // 並び替える
     const remove = dragList.splice(startIndex, 1);
     dragList.splice(endIndex, 0, remove[0]);
   };
-  const handleDragEnd = (result) => {
+  const handleDragEnd = (result: DropResult) => {
+    if (!result.destination) return;
     reorder(taskCardList, result.source.index, result.destination.index);
     setTaskCardList(taskCardList);
   };

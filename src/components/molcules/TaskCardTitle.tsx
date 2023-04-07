@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 export const TaskCardTitle = () => {
   const [isClick, setIsClick] = useState(false);
@@ -7,10 +7,11 @@ export const TaskCardTitle = () => {
   const handleClick = () => {
     setIsClick(true);
   };
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e);
     setInputCardTitle(e.target.value);
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsClick(false);
   };
@@ -31,7 +32,7 @@ export const TaskCardTitle = () => {
             autoFocus
             onChange={handleChange}
             onBlur={handleBlur}
-            maxLength="15"
+            maxLength={15}
           ></input>
         </form>
       )}

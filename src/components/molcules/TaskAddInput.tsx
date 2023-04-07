@@ -1,10 +1,17 @@
-import React from "react";
+import { Dispatch, SetStateAction } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { TaskProps } from "../../types/Types";
 
-export const TaskAddInput = ({ inputText, setInputText, taskList, setTaskList }) => {
-  const handleSubmit = (e) => {
+type Props = {
+  inputText: string;
+  setInputText: Dispatch<SetStateAction<string>>;
+  taskList: TaskProps[];
+  setTaskList: Dispatch<SetStateAction<TaskProps[]>>;
+};
+
+export const TaskAddInput = ({ inputText, setInputText, taskList, setTaskList }: Props) => {
+  const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-
     const taskId = uuidv4();
 
     if (inputText === "") {
@@ -15,7 +22,7 @@ export const TaskAddInput = ({ inputText, setInputText, taskList, setTaskList })
     setInputText("");
   };
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputText(e.target.value);
   };
 
@@ -26,7 +33,7 @@ export const TaskAddInput = ({ inputText, setInputText, taskList, setTaskList })
           className="taskAddInput"
           type="text"
           placeholder="add a task"
-          maxLength="15"
+          maxLength={15}
           autoFocus
           onChange={handleChange}
           value={inputText}

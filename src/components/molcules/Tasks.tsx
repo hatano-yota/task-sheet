@@ -1,15 +1,22 @@
-import React from "react";
-import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import { DragDropContext, DropResult, Droppable } from "react-beautiful-dnd";
 import { Task } from "../atoms/Task";
+import { DragElement, TaskProps } from "../../types/Types";
+import { Dispatch, SetStateAction } from "react";
 
-export const Tasks = ({ taskList, setTaskList }) => {
-  const reorder = (dragList, startIndex, endIndex) => {
+type Props = {
+  taskList: TaskProps[];
+  setTaskList: Dispatch<SetStateAction<TaskProps[]>>;
+};
+
+export const Tasks = ({ taskList, setTaskList }: Props) => {
+  const reorder = (dragList: DragElement[], startIndex: number, endIndex: number) => {
     // 並び替える
     const remove = dragList.splice(startIndex, 1);
     dragList.splice(endIndex, 0, remove[0]);
   };
 
-  const handleDragEnd = (result) => {
+  const handleDragEnd = (result: DropResult) => {
+    if (!result.destination) return;
     reorder(taskList, result.source.index, result.destination.index);
     setTaskList(taskList);
   };
