@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export const TaskCardTitle = () => {
   const [isClick, setIsClick] = useState(false);
-  const [inputCardTitle, setInputCardTitle] = useState("Today");
+  const [inputCardTitle, setInputCardTitle] = useState("task list");
 
   const handleClick = () => {
     setIsClick(true);
