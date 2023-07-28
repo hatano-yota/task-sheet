@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { DragDropContext, DropResult, Droppable } from "react-beautiful-dnd";
+import { DragElement } from "../../types/Types";
 import { AddTaskCardButton } from "../organisms/AddTaskCardButton";
 import { TaskCard } from "../organisms/TaskCard";
-import { DragElement } from "../../types/Types";
 
 export const TaskCards = () => {
   const [taskCardList, setTaskCardList] = useState<DragElement[]>([
@@ -36,7 +36,7 @@ export const TaskCards = () => {
               />
             ))}
             {provided.placeholder}
-
+            
             <AddTaskCardButton taskCardList={taskCardList} setTaskCardList={setTaskCardList} />
           </div>
         )}
