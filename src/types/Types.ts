@@ -6,5 +6,10 @@ export type DragElement = {
 export type TaskProps = {
   id: string;
   draggableId: string;
-  text: string;
+  isDone: boolean;
+  priority: Priority;
+  title: string;
+  details: string;
 };
+
+export type Priority = "high" | "medium" | "low";
