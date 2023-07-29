@@ -17,7 +17,7 @@ export const AddTaskCardButton = ({ taskCardList, setTaskCardList }: Props) => {
   };
 
   return (
-    <div className="addTaskCardButtonArea" ref={scrollRightRef}>
+    <div className="fixed top-36 right-6" ref={scrollRightRef}>
       <button className="addTaskCardButton" onClick={addTaskCard}>
         +
       </button>

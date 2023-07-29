@@ -1,6 +1,6 @@
+import { Dispatch, SetStateAction } from "react";
 import { Draggable } from "react-beautiful-dnd";
 import { TaskProps } from "../../types/Types";
-import { Dispatch, SetStateAction } from "react";
 
 type Props = {
   task: TaskProps;
@@ -18,14 +18,14 @@ export const Task = ({ task, index, taskList, setTaskList }: Props) => {
     <Draggable index={index} draggableId={task.draggableId}>
       {(provided) => (
         <div
-          className="taskBox"
+          className="flex justify-between items-center py-4 mt-3 bg-white rounded shadow"
           key={task.id}
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
         >
-          <p className="taskText">{task.text}</p>
-          <button className="taskTrashButton" onClick={() => handleDelete(task.id)}>
+          <p className="ml-3">{task.title}</p>
+          <button className="mr-2 border-none cursor-pointer" onClick={() => handleDelete(task.id)}>
             <i className="fa-solid fa-trash"></i>
           </button>
         </div>
