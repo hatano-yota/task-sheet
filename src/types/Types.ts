@@ -9,7 +9,7 @@ export type TaskProps = {
   isDone: boolean;
   priority: Priority;
   title: string;
-  details: string;
+  content: string;
 };
 
 export type Priority = "high" | "medium" | "low";

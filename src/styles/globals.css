@@ -17,20 +17,12 @@ header {
   text-align: center;
   padding: 4px 10%;
   margin-bottom: 50px;
-  background-color: rgb(128, 123, 111);
+  background-color: #807b6f;
 }
 .app {
   background-image: url(../images/mountain.jpg);
   background-size: cover;
   min-height: 100vh;
-}
-.taskAddInput {
-  width: 100%;
-  font-size: 1.3rem;
-  padding: 10px 15px;
-  border-radius: 3px;
-  border: none;
-  outline: none;
 }
 .taskCardsArea {
   display: flex;

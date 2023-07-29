@@ -17,20 +17,26 @@ export const TaskCardTitle = (props: Props) => {
   };
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (inputCardTitle === "") {
+      return;
+    }
     setIsClick(false);
   };
   const handleBlur = () => {
+    if (inputCardTitle === "") {
+      return;
+    }
     setIsClick(false);
   };
 
   return (
-    <div onClick={handleClick} className="w-[30%] text-lg font-semibold mb-3 cursor-pointer">
+    <div onClick={handleClick} className="w-[30%] text-lg mb-3 cursor-pointer">
       {!isClick ? (
         <h3 className="p-1 whitespace-nowrap">{inputCardTitle}</h3>
       ) : (
         <form onSubmit={handleSubmit}>
           <input
-            className="w-44 p-1 rounded border-none outline-none"
+            className="w-44 p-1 bg-theme rounded border-none outline-none"
             type="text"
             value={inputCardTitle}
             autoFocus
