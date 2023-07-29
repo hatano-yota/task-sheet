@@ -1,8 +1,13 @@
 import { useState } from "react";
 
-export const TaskCardTitle = () => {
+type Props = {
+  index: number;
+};
+
+export const TaskCardTitle = (props: Props) => {
+  const { index } = props;
   const [isClick, setIsClick] = useState(false);
-  const [inputCardTitle, setInputCardTitle] = useState("task list");
+  const [inputCardTitle, setInputCardTitle] = useState(`task card ${index + 1}`);
 
   const handleClick = () => {
     setIsClick(true);

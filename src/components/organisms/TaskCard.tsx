@@ -22,7 +22,7 @@ export const TaskCard = ({ taskCard, index, taskCardList, setTaskCardList }: Pro
       {(provided) => (
         <div className="taskCard" ref={provided.innerRef} {...provided.draggableProps}>
           <div className="taskHeader" {...provided.dragHandleProps}>
-            <TaskCardTitle />
+            <TaskCardTitle index={index} />
             <TaskCardDeleteButton
               taskCard={taskCard}
               taskCardList={taskCardList}
