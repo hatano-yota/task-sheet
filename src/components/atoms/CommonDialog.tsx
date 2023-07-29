@@ -4,12 +4,12 @@ type Props = {
   isOpen: boolean;
   handleClose?: () => void;
   isMessageDialog?: boolean;
-  className?: string; // tailwind の max-x-* クラスなどを設定する
+  className?: string;
   children: ReactNode;
 };
 
 const CommonDialog = (props: Props): JSX.Element => {
-  const { isOpen, handleClose, className = "max-w-xl", children } = props;
+  const { isOpen, handleClose, className = "max-w-3xl", children } = props;
 
   return (
     <div
@@ -22,7 +22,8 @@ const CommonDialog = (props: Props): JSX.Element => {
       }}
     >
       <div
-        className={`relative m-4 max-h-[calc(100vh-2rem)] w-full overflow-y-auto rounded-lg bg-white p-8 md:m-10 ${className}`}
+        onClick={(e) => e.stopPropagation()}
+        className={`relative m-4 max-h-[calc(100vh-2rem)] w-full overflow-y-auto rounded-lg bg-theme p-8 md:m-10 ${className}`}
       >
         {children}
       </div>

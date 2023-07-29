@@ -1,10 +1,10 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import { Draggable } from "react-beautiful-dnd";
 import { DragElement, TaskProps } from "../../types/Types";
-import { AddTaskButton } from "../molcules/AddTaskButton";
-import { TaskCardDeleteButton } from "../molcules/TaskCardDeleteButton";
-import { TaskCardTitle } from "../molcules/TaskCardTitle";
-import { Tasks } from "../molcules/Tasks";
+import { AddTaskButton } from "../molecules/AddTaskButton";
+import { TaskCardDeleteButton } from "../molecules/TaskCardDeleteButton";
+import { TaskCardTitle } from "../molecules/TaskCardTitle";
+import { Tasks } from "../molecules/Tasks";
 
 type Props = {
   index: number;
@@ -20,7 +20,7 @@ export const TaskCard = ({ taskCard, index, taskCardList, setTaskCardList }: Pro
     <Draggable draggableId={taskCard.id} index={index}>
       {(provided) => (
         <div
-          className="min-w-[250px] px-6 py-2 m-2 rounded bg-blue-200"
+          className="min-w-[250px] px-6 py-2 m-2 rounded bg-theme"
           ref={provided.innerRef}
           {...provided.draggableProps}
         >

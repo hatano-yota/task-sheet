@@ -2,7 +2,19 @@
 module.exports = {
   content: ["./src/components/**/*.tsx"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        theme: {
+          DEFAULT: "#D3CCD6",
+        },
+        primary: {
+          DEFAULT: "#7B7C7D",
+        },
+        error: {
+          DEFAULT: "#DB250C",
+        },
+      },
+    },
   },
   plugins: [],
 };

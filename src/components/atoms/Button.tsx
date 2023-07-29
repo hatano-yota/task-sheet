@@ -12,7 +12,7 @@ const Button = (props: ButtonProps): JSX.Element => {
   // variant でボタンの色を分岐
   const btnColor =
     variant === "primary"
-      ? "border-primary bg-primary text-white disabled:border-theme-medium disabled:bg-theme-medium"
+      ? "border-primary text-primary disabled:border-theme-medium disabled:bg-theme-medium"
       : variant === "secondary"
       ? "border-primary bg-white text-primary disabled:border-theme-medium disabled:text-theme-medium"
       : variant === "error"
