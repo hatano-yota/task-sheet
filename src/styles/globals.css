@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  font-size: 45px;
+  color: white;
+  font-weight: 600;
+  text-shadow: 2px 2px 2px black;
+}
+header {
+  text-align: center;
+  padding: 4px 10%;
+  margin-bottom: 50px;
+  background-color: rgb(128, 123, 111);
+}
+.app {
+  background-image: url(../images/mountain.jpg);
+  background-size: cover;
+  min-height: 100vh;
+}
+.taskAddInput {
+  width: 100%;
+  font-size: 1.3rem;
+  padding: 10px 15px;
+  border-radius: 3px;
+  border: none;
+  outline: none;
+}
+.taskCardsArea {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  overflow-x: auto;
+  margin-left: 16px;
+  margin-right: 96px;
+}
+.taskCardsArea::-webkit-scrollbar {
+  display: none;
+}
+.addTaskCardButton {
+  color: #243040;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: none;
+  font-size: 30px;
+  box-shadow: 3px 3px 8px 1px black;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.addTaskCardButton:hover {
+  box-shadow: none;
+  transform: translate(2px, 2px);
+}

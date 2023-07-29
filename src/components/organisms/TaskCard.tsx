@@ -1,10 +1,10 @@
 import { Dispatch, SetStateAction, useState } from "react";
-import { TaskCardTitle } from "../molcules/TaskCardTitle";
-import { TaskCardDeleteButton } from "../molcules/TaskCardDeleteButton";
-import { TaskAddInput } from "../molcules/TaskAddInput";
-import { Tasks } from "../molcules/Tasks";
 import { Draggable } from "react-beautiful-dnd";
 import { DragElement, TaskProps } from "../../types/Types";
+import { AddTaskButton } from "../molcules/AddTaskButton";
+import { TaskCardDeleteButton } from "../molcules/TaskCardDeleteButton";
+import { TaskCardTitle } from "../molcules/TaskCardTitle";
+import { Tasks } from "../molcules/Tasks";
 
 type Props = {
   index: number;
@@ -14,14 +14,17 @@ type Props = {
 };
 
 export const TaskCard = ({ taskCard, index, taskCardList, setTaskCardList }: Props) => {
-  const [inputText, setInputText] = useState<string>("");
   const [taskList, setTaskList] = useState<TaskProps[]>([]);
 
   return (
     <Draggable draggableId={taskCard.id} index={index}>
       {(provided) => (
-        <div className="taskCard" ref={provided.innerRef} {...provided.draggableProps}>
-          <div className="taskHeader" {...provided.dragHandleProps}>
+        <div
+          className="min-w-[250px] px-6 py-2 m-2 rounded bg-blue-200"
+          ref={provided.innerRef}
+          {...provided.draggableProps}
+        >
+          <div className="flex justify-between" {...provided.dragHandleProps}>
             <TaskCardTitle index={index} />
             <TaskCardDeleteButton
               taskCard={taskCard}
@@ -29,12 +32,7 @@ export const TaskCard = ({ taskCard, index, taskCardList, setTaskCardList }: Pro
               setTaskCardList={setTaskCardList}
             />
           </div>
-          <TaskAddInput
-            inputText={inputText}
-            setInputText={setInputText}
-            taskList={taskList}
-            setTaskList={setTaskList}
-          />
+          <AddTaskButton taskList={taskList} setTaskList={setTaskList} />
           <Tasks taskList={taskList} setTaskList={setTaskList} />
         </div>
       )}
