@@ -13,7 +13,8 @@ type UseAddTaskButton = (args: {
   handleClose: () => void;
   handleChangeTitle: (e: ChangeEvent<HTMLInputElement>) => void;
   handleChangeContent: (e: ChangeEvent<HTMLTextAreaElement>) => void;
-  handleSubmit: () => void;
+  handleSave: () => void;
+  handleToggleIsDone: () => void;
 };
 
 export const useAddTaskButton: UseAddTaskButton = (args) => {
@@ -42,7 +43,11 @@ export const useAddTaskButton: UseAddTaskButton = (args) => {
     setInputContent(e.target.value);
   };
 
-  const handleSubmit = () => {
+  const handleToggleIsDone = () => {
+    setIsDone((prev) => !prev);
+  };
+
+  const handleSave = () => {
     const taskId = uuidv4();
     if (inputTitle === "") {
       return;
@@ -70,6 +75,7 @@ export const useAddTaskButton: UseAddTaskButton = (args) => {
     handleClose,
     handleChangeTitle,
     handleChangeContent,
-    handleSubmit,
+    handleSave,
+    handleToggleIsDone,
   };
 };

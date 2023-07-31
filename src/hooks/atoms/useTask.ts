@@ -14,7 +14,8 @@ type UseTask = (args: {
   handleChangeTitle: (e: ChangeEvent<HTMLInputElement>) => void;
   handleChangeContent: (e: ChangeEvent<HTMLTextAreaElement>) => void;
   handleSave: () => void;
-  handleDelete: (id: string) => void;
+  handleDelete: () => void;
+  handleToggleIsDone: () => void;
 };
 
 export const useTask: UseTask = (args) => {
@@ -43,8 +44,17 @@ export const useTask: UseTask = (args) => {
     setInputContent(e.target.value);
   };
 
+  const handleDelete = () => {
+    setTaskList(taskList.filter((t) => t.id !== task.id));
+    handleClose();
+  };
+
+  const handleToggleIsDone = () => {
+    setIsDone((prev) => !prev);
+  };
+
   const handleSave = () => {
-    if (inputTitle === "") {
+    if (inputTitle.trim() === "") {
       return;
     }
     const updateTaskList = taskList.map((t) =>
@@ -62,10 +72,6 @@ export const useTask: UseTask = (args) => {
     handleClose();
   };
 
-  const handleDelete = (id: string) => {
-    setTaskList(taskList.filter((task) => task.id !== id));
-  };
-
   return {
     isOpen,
     inputTitle,
@@ -76,5 +82,6 @@ export const useTask: UseTask = (args) => {
     handleChangeContent,
     handleSave,
     handleDelete,
+    handleToggleIsDone,
   };
 };
