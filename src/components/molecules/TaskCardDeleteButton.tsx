@@ -15,7 +15,7 @@ export const TaskCardDeleteButton = ({ taskCard, taskCardList, setTaskCardList }
   return (
     <div>
       <button
-        className="text-base text-rose-900 bg-theme border-none cursor-pointer"
+        className="text-base text-red-700 bg-theme border-none cursor-pointer"
         onClick={() => deleteTaskCard(taskCard.id)}
       >
         <i className="fa-solid fa-xmark"></i>

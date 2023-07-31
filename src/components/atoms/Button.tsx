@@ -2,7 +2,7 @@ import { IconType } from "react-icons";
 
 export type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   variant: "primary" | "secondary" | "error" | "error-secondary" | "text";
-  label: string;
+  label?: string;
   Icon?: IconType;
 };
 
