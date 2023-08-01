@@ -22,15 +22,17 @@ export const TaskCards = () => {
   };
 
   const scrollRightRef = useRef<HTMLDivElement>(null);
+  const [refFlag, setRefFlag] = useState(false);
 
   const addTaskCard = () => {
     const TaskCardId = uuidv4();
     setTaskCardList([...taskCardList, { id: TaskCardId, draggableId: `item-${TaskCardId}` }]);
+    setRefFlag((prev) => !prev);
   };
 
   useLayoutEffect(() => {
     scrollRightRef?.current?.scrollIntoView({ behavior: "smooth", block: "end" });
-  }, [taskCardList]);
+  }, [refFlag]);
 
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
