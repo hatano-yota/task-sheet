@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { DragDropContext, DropResult, Droppable } from "react-beautiful-dnd";
+import { v4 as uuidv4 } from "uuid";
 import { DragElement } from "../../types/Types";
-import { AddTaskCardButton } from "../organisms/AddTaskCardButton";
 import { TaskCard } from "../organisms/TaskCard";
 
 export const TaskCards = () => {
@@ -21,6 +21,17 @@ export const TaskCards = () => {
     setTaskCardList(taskCardList);
   };
 
+  const scrollRightRef = useRef<HTMLDivElement>(null);
+
+  const addTaskCard = () => {
+    const TaskCardId = uuidv4();
+    setTaskCardList([...taskCardList, { id: TaskCardId, draggableId: `item-${TaskCardId}` }]);
+  };
+
+  useLayoutEffect(() => {
+    scrollRightRef?.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+  }, [taskCardList]);
+
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
       <Droppable droppableId="droppable2" direction="horizontal">
@@ -36,8 +47,12 @@ export const TaskCards = () => {
               />
             ))}
             {provided.placeholder}
-            
-            <AddTaskCardButton taskCardList={taskCardList} setTaskCardList={setTaskCardList} />
+            <div ref={scrollRightRef} />
+            <div className="fixed top-36 right-6">
+              <button className="addTaskCardButton" onClick={addTaskCard}>
+                +
+              </button>
+            </div>
           </div>
         )}
       </Droppable>
