@@ -26,7 +26,7 @@ const Button = (props: ButtonProps): JSX.Element => {
   return (
     <button
       {...buttonHTMLAttributes}
-      className={`relative flex items-center justify-center gap-1 rounded-md border p-2 text-center text-btn transition-all duration-200 ease-linear hover:opacity-70 md:px-4 disabled:opacity-100
+      className={`relative flex items-center justify-center rounded-md border p-2 text-center text-btn transition-all duration-200 ease-linear hover:opacity-50 md:px-4 disabled:opacity-100
       ${btnColor} ${className}`}
     >
       {Icon && (
