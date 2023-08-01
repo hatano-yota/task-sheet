@@ -8,15 +8,15 @@ type Props = {
 };
 
 export const TaskCardDeleteButton = ({ taskCard, taskCardList, setTaskCardList }: Props) => {
-  const deleteTaskCard = (id: string) => {
-    setTaskCardList(taskCardList.filter((taskCard) => taskCard.id !== id));
+  const deleteTaskCard = () => {
+    setTaskCardList(taskCardList.filter((tc) => tc.id !== taskCard.id));
   };
 
   return (
     <div>
       <button
         className="text-base text-red-700 bg-theme border-none cursor-pointer"
-        onClick={() => deleteTaskCard(taskCard.id)}
+        onClick={deleteTaskCard}
       >
         <i className="fa-solid fa-xmark"></i>
       </button>
