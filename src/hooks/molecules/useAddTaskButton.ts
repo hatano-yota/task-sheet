@@ -7,6 +7,7 @@ type UseAddTaskButton = (args: {
   setTaskList: Dispatch<SetStateAction<TaskProps[]>>;
 }) => {
   isOpen: boolean;
+  isDone: boolean;
   inputTitle: string;
   inputContent: string;
   handleOpen: () => void;
@@ -28,6 +29,8 @@ export const useAddTaskButton: UseAddTaskButton = (args) => {
   const handleOpen = () => {
     setInputTitle("");
     setInputContent("");
+    setIsDone(false);
+    setPriority("medium");
     setIsOpen(true);
   };
 
@@ -49,7 +52,7 @@ export const useAddTaskButton: UseAddTaskButton = (args) => {
 
   const handleSave = () => {
     const taskId = uuidv4();
-    if (inputTitle === "") {
+    if (inputTitle.trim() === "") {
       return;
     }
     // カードを追加する
@@ -69,6 +72,7 @@ export const useAddTaskButton: UseAddTaskButton = (args) => {
 
   return {
     isOpen,
+    isDone,
     inputTitle,
     inputContent,
     handleOpen,

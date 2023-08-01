@@ -21,14 +21,11 @@ type UseTask = (args: {
 export const useTask: UseTask = (args) => {
   const { task, taskList, setTaskList } = args;
   const [isOpen, setIsOpen] = useState(false);
-  const [isDone, setIsDone] = useState(task.isDone);
   const [priority, setPriority] = useState<Priority>(task.priority);
   const [inputTitle, setInputTitle] = useState<string>(task.title);
   const [inputContent, setInputContent] = useState<string>(task.content);
 
   const handleOpen = () => {
-    setInputTitle(task.title);
-    setInputContent(task.content);
     setIsOpen(true);
   };
 
@@ -36,11 +33,11 @@ export const useTask: UseTask = (args) => {
     setIsOpen(false);
   };
 
-  const handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeTitle = (e: ChangeEvent<HTMLInputElement>) => {
     setInputTitle(e.target.value);
   };
 
-  const handleChangeContent = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleChangeContent = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setInputContent(e.target.value);
   };
 
@@ -50,7 +47,8 @@ export const useTask: UseTask = (args) => {
   };
 
   const handleToggleIsDone = () => {
-    setIsDone((prev) => !prev);
+    setTaskList(taskList.map((t) => (t.id === task.id ? { ...t, isDone: !t.isDone } : t)));
+    handleClose();
   };
 
   const handleSave = () => {
@@ -61,7 +59,6 @@ export const useTask: UseTask = (args) => {
       t.id === task.id
         ? {
             ...t,
-            isDone: isDone,
             priority: priority,
             title: inputTitle,
             content: inputContent,
