@@ -10,7 +10,7 @@ type Props = {
   setTaskList: Dispatch<SetStateAction<TaskProps[]>>;
 };
 
-export const AddTaskButton = (props: Props) => {
+const AddTaskButton = (props: Props) => {
   const { taskList, setTaskList } = props;
   const {
     isOpen,
@@ -66,3 +66,5 @@ export const AddTaskButton = (props: Props) => {
     </>
   );
 };
+
+export default AddTaskButton;

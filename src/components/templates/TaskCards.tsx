@@ -1,38 +1,10 @@
-import { useLayoutEffect, useRef, useState } from "react";
-import { DragDropContext, DropResult, Droppable } from "react-beautiful-dnd";
-import { v4 as uuidv4 } from "uuid";
-import { DragElement } from "../../types/Types";
-import { TaskCard } from "../organisms/TaskCard";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
+import { useTaskCards } from "../../hooks/templates/useTaskCards";
+import TaskCard from "../organisms/TaskCard";
 
-export const TaskCards = () => {
-  const [taskCardList, setTaskCardList] = useState<DragElement[]>([
-    { id: "0", draggableId: "item-00" },
-  ]);
-
-  // TODO *重複処理
-  const reorder = (dragList: DragElement[], startIndex: number, endIndex: number) => {
-    // 並び替える
-    const remove = dragList.splice(startIndex, 1);
-    dragList.splice(endIndex, 0, remove[0]);
-  };
-  const handleDragEnd = (result: DropResult) => {
-    if (!result.destination) return;
-    reorder(taskCardList, result.source.index, result.destination.index);
-    setTaskCardList(taskCardList);
-  };
-
-  const scrollRightRef = useRef<HTMLDivElement>(null);
-  const [refFlag, setRefFlag] = useState(false);
-
-  const addTaskCard = () => {
-    const TaskCardId = uuidv4();
-    setTaskCardList([...taskCardList, { id: TaskCardId, draggableId: `item-${TaskCardId}` }]);
-    setRefFlag((prev) => !prev);
-  };
-
-  useLayoutEffect(() => {
-    scrollRightRef?.current?.scrollIntoView({ behavior: "smooth", block: "end" });
-  }, [refFlag]);
+const TaskCards = () => {
+  const { scrollRightRef, taskCardList, setTaskCardList, handleDragEnd, addTaskCard } =
+    useTaskCards();
 
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
@@ -61,3 +33,5 @@ export const TaskCards = () => {
     </DragDropContext>
   );
 };
+
+export default TaskCards;

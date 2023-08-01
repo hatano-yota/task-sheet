@@ -13,7 +13,8 @@ type Props = {
   setTaskList: Dispatch<SetStateAction<TaskProps[]>>;
 };
 
-export const Task = ({ task, index, taskList, setTaskList }: Props) => {
+const Task = (props: Props) => {
+  const { index, task, taskList, setTaskList } = props;
   const {
     isOpen,
     inputTitle,
@@ -93,3 +94,5 @@ export const Task = ({ task, index, taskList, setTaskList }: Props) => {
     </>
   );
 };
+
+export default Task;

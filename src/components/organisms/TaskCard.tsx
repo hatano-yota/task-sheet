@@ -1,11 +1,12 @@
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { Draggable } from "react-beautiful-dnd";
 import { BsClipboard2, BsClipboard2Check, BsTrash2 } from "react-icons/bs";
-import { DragElement, TaskProps } from "../../types/Types";
+import { useTaskCard } from "../../hooks/organisms/useTaskCard";
+import { DragElement } from "../../types/Types";
 import Button from "../atoms/Button";
-import { AddTaskButton } from "../molecules/AddTaskButton";
-import { TaskCardTitle } from "../molecules/TaskCardTitle";
-import { Tasks } from "../molecules/Tasks";
+import AddTaskButton from "../molecules/AddTaskButton";
+import TaskCardTitle from "../molecules/TaskCardTitle";
+import Tasks from "../molecules/Tasks";
 
 type Props = {
   index: number;
@@ -14,16 +15,13 @@ type Props = {
   setTaskCardList: Dispatch<SetStateAction<DragElement[]>>;
 };
 
-export const TaskCard = (props: Props) => {
+const TaskCard = (props: Props) => {
   const { index, taskCard, taskCardList, setTaskCardList } = props;
-  const [taskList, setTaskList] = useState<TaskProps[]>([]);
-  const [isFront, setIsFront] = useState(true);
-  const handleToggleIsFront = () => {
-    setIsFront((prev) => !prev);
-  };
-  const deleteTaskCard = () => {
-    setTaskCardList(taskCardList.filter((tc) => tc.id !== taskCard.id));
-  };
+  const { isFront, taskList, setTaskList, handleToggleIsFront, deleteTaskCard } = useTaskCard({
+    taskCard,
+    taskCardList,
+    setTaskCardList,
+  });
 
   return (
     <Draggable draggableId={taskCard.id} index={index}>
@@ -58,3 +56,5 @@ export const TaskCard = (props: Props) => {
     </Draggable>
   );
 };
+
+export default TaskCard;

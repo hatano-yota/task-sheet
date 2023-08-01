@@ -1,28 +1,8 @@
-import { useState } from "react";
+import { useTaskCardTitle } from "../../hooks/molecules/useTaskCardTitle";
 
-export const TaskCardTitle = () => {
-  const [isClick, setIsClick] = useState(false);
-  const [inputCardTitle, setInputCardTitle] = useState(`Task card`);
-
-  const handleClick = () => {
-    setIsClick(true);
-  };
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputCardTitle(e.target.value);
-  };
-  const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (inputCardTitle.trim() === "") {
-      return;
-    }
-    setIsClick(false);
-  };
-  const handleBlur = () => {
-    if (inputCardTitle.trim() === "") {
-      return;
-    }
-    setIsClick(false);
-  };
+const TaskCardTitle = () => {
+  const { isClick, inputCardTitle, handleClick, handleChange, handleSubmit, handleBlur } =
+    useTaskCardTitle();
 
   return (
     <div onClick={handleClick} className="w-[30%] text-lg mb-3 cursor-pointer">
@@ -38,9 +18,11 @@ export const TaskCardTitle = () => {
             onChange={handleChange}
             onBlur={handleBlur}
             maxLength={15}
-          ></input>
+          />
         </form>
       )}
     </div>
   );
 };
+
+export default TaskCardTitle;

@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from "react";
 import { DragDropContext, DropResult, Droppable } from "react-beautiful-dnd";
 import { DragElement, TaskProps } from "../../types/Types";
-import { Task } from "../atoms/Task";
+import Task from "../atoms/Task";
 
 type Props = {
   isFront: boolean;
@@ -9,7 +9,7 @@ type Props = {
   setTaskList: Dispatch<SetStateAction<TaskProps[]>>;
 };
 
-export const Tasks = (props: Props) => {
+const Tasks = (props: Props) => {
   const { isFront, taskList, setTaskList } = props;
   const reorder = (dragList: DragElement[], startIndex: number, endIndex: number) => {
     // 並び替える
@@ -62,3 +62,5 @@ export const Tasks = (props: Props) => {
     </div>
   );
 };
+
+export default Tasks;
