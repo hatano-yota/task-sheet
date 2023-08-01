@@ -17,13 +17,13 @@ export const TaskCardTitle = (props: Props) => {
   };
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (inputCardTitle === "") {
+    if (inputCardTitle.trim() === "") {
       return;
     }
     setIsClick(false);
   };
   const handleBlur = () => {
-    if (inputCardTitle === "") {
+    if (inputCardTitle.trim() === "") {
       return;
     }
     setIsClick(false);
