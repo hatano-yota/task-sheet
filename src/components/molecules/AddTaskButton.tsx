@@ -38,12 +38,12 @@ export const AddTaskButton = (props: Props) => {
             onChange={handleChangeTitle}
           />
           <div className="flex gap-2">
-            <Button variant="primary" Icon={BsListOl} className="gap-0" />
+            <Button variant="primary" Icon={BsListOl} />
             <Button
               variant="primary"
               onClick={handleToggleIsDone}
               Icon={isDone ? BsArrowCounterclockwise : BsCheck2}
-              className={`gap-0 ${isDone ? "text-red-700" : "text-green-800"}`}
+              className={isDone ? "text-red-700" : "text-green-800"}
             />
           </div>
         </div>

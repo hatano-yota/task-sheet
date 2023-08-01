@@ -14,7 +14,8 @@ type Props = {
   setTaskCardList: Dispatch<SetStateAction<DragElement[]>>;
 };
 
-export const TaskCard = ({ taskCard, index, taskCardList, setTaskCardList }: Props) => {
+export const TaskCard = (props: Props) => {
+  const { index, taskCard, taskCardList, setTaskCardList } = props;
   const [taskList, setTaskList] = useState<TaskProps[]>([]);
   const [isFront, setIsFront] = useState(true);
   const handleToggleIsFront = () => {
@@ -28,29 +29,30 @@ export const TaskCard = ({ taskCard, index, taskCardList, setTaskCardList }: Pro
     <Draggable draggableId={taskCard.id} index={index}>
       {(provided) => (
         <div
-          className="min-w-[250px] px-6 pt-2 pb-4 m-2 rounded bg-theme"
+          className="min-w-[250px] m-2 rounded bg-theme"
           ref={provided.innerRef}
           {...provided.draggableProps}
         >
-          <div className="flex justify-between" {...provided.dragHandleProps}>
-            <TaskCardTitle index={index} />
-            <div className="flex gap-1">
-              <Button
-                variant="primary"
-                onClick={handleToggleIsFront}
-                Icon={isFront ? BsClipboard2 : BsClipboard2Check}
-                className="gap-0"
-              />
-              <Button
-                variant="primary"
-                onClick={deleteTaskCard}
-                Icon={BsTrash2}
-                className="gap-0 text-red-700"
-              />
+          <div className="px-6 pt-2 pb-4" {...provided.dragHandleProps}>
+            <div className="flex justify-between">
+              <TaskCardTitle />
+              <div className="flex gap-1">
+                <Button
+                  variant="primary"
+                  onClick={handleToggleIsFront}
+                  Icon={isFront ? BsClipboard2 : BsClipboard2Check}
+                />
+                <Button
+                  variant="primary"
+                  onClick={deleteTaskCard}
+                  Icon={BsTrash2}
+                  className="text-red-700"
+                />
+              </div>
             </div>
+            <AddTaskButton taskList={taskList} setTaskList={setTaskList} />
+            <Tasks isFront={isFront} taskList={taskList} setTaskList={setTaskList} />
           </div>
-          <AddTaskButton taskList={taskList} setTaskList={setTaskList} />
-          <Tasks isFront={isFront} taskList={taskList} setTaskList={setTaskList} />
         </div>
       )}
     </Draggable>

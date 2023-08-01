@@ -40,18 +40,18 @@ export const Task = ({ task, index, taskList, setTaskList }: Props) => {
             onChange={handleChangeTitle}
           />
           <div className="flex gap-2">
-            <Button variant="primary" Icon={BsListOl} className="gap-0" />
+            <Button variant="primary" Icon={BsListOl} />
             <Button
               variant="primary"
               onClick={handleToggleIsDone}
               Icon={task.isDone ? BsArrowCounterclockwise : BsCheck2}
-              className={`gap-0 ${task.isDone ? "text-red-700" : "text-green-800"}`}
+              className={task.isDone ? "text-red-700" : "text-green-800"}
             />
             <Button
               variant="primary"
               onClick={handleDelete}
               Icon={BsTrash2}
-              className="gap-0 text-red-700"
+              className="text-red-700"
             />
           </div>
         </div>
