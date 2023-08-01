@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-import { BsCheck2, BsListOl } from "react-icons/bs";
+import { BsArrowCounterclockwise, BsCheck2, BsListOl } from "react-icons/bs";
 import { useAddTaskButton } from "../../hooks/molecules/useAddTaskButton";
 import { TaskProps } from "../../types/Types";
 import Button from "../atoms/Button";
@@ -14,6 +14,7 @@ export const AddTaskButton = (props: Props) => {
   const { taskList, setTaskList } = props;
   const {
     isOpen,
+    isDone,
     inputTitle,
     inputContent,
     handleOpen,
@@ -41,8 +42,8 @@ export const AddTaskButton = (props: Props) => {
             <Button
               variant="primary"
               onClick={handleToggleIsDone}
-              Icon={BsCheck2}
-              className="gap-0 text-green-800"
+              Icon={isDone ? BsArrowCounterclockwise : BsCheck2}
+              className={`gap-0 ${isDone ? "text-red-700" : "text-green-800"}`}
             />
           </div>
         </div>

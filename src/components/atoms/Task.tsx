@@ -1,6 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 import { Draggable } from "react-beautiful-dnd";
-import { BsCheck2, BsListOl, BsTrash2 } from "react-icons/bs";
+import { BsArrowCounterclockwise, BsCheck2, BsListOl, BsTrash2 } from "react-icons/bs";
 import { useTask } from "../../hooks/atoms/useTask";
 import { TaskProps } from "../../types/Types";
 import Button from "./Button";
@@ -44,8 +44,8 @@ export const Task = ({ task, index, taskList, setTaskList }: Props) => {
             <Button
               variant="primary"
               onClick={handleToggleIsDone}
-              Icon={BsCheck2}
-              className="gap-0 text-green-800"
+              Icon={task.isDone ? BsArrowCounterclockwise : BsCheck2}
+              className={`gap-0 ${task.isDone ? "text-red-700" : "text-green-800"}`}
             />
             <Button
               variant="primary"

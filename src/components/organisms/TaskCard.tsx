@@ -1,8 +1,9 @@
 import { Dispatch, SetStateAction, useState } from "react";
 import { Draggable } from "react-beautiful-dnd";
+import { BsClipboard2, BsClipboard2Check, BsTrash2 } from "react-icons/bs";
 import { DragElement, TaskProps } from "../../types/Types";
+import Button from "../atoms/Button";
 import { AddTaskButton } from "../molecules/AddTaskButton";
-import { TaskCardDeleteButton } from "../molecules/TaskCardDeleteButton";
 import { TaskCardTitle } from "../molecules/TaskCardTitle";
 import { Tasks } from "../molecules/Tasks";
 
@@ -19,6 +20,9 @@ export const TaskCard = ({ taskCard, index, taskCardList, setTaskCardList }: Pro
   const handleToggleIsFront = () => {
     setIsFront((prev) => !prev);
   };
+  const deleteTaskCard = () => {
+    setTaskCardList(taskCardList.filter((tc) => tc.id !== taskCard.id));
+  };
 
   return (
     <Draggable draggableId={taskCard.id} index={index}>
@@ -30,14 +34,23 @@ export const TaskCard = ({ taskCard, index, taskCardList, setTaskCardList }: Pro
         >
           <div className="flex justify-between" {...provided.dragHandleProps}>
             <TaskCardTitle index={index} />
-            <TaskCardDeleteButton
-              taskCard={taskCard}
-              taskCardList={taskCardList}
-              setTaskCardList={setTaskCardList}
-            />
+            <div className="flex gap-1">
+              <Button
+                variant="primary"
+                onClick={handleToggleIsFront}
+                Icon={isFront ? BsClipboard2 : BsClipboard2Check}
+                className="gap-0"
+              />
+              <Button
+                variant="primary"
+                onClick={deleteTaskCard}
+                Icon={BsTrash2}
+                className="gap-0 text-red-700"
+              />
+            </div>
           </div>
           <AddTaskButton taskList={taskList} setTaskList={setTaskList} />
-          <Tasks taskList={taskList} setTaskList={setTaskList} />
+          <Tasks isFront={isFront} taskList={taskList} setTaskList={setTaskList} />
         </div>
       )}
     </Draggable>
